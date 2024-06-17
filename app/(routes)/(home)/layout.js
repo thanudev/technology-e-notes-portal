@@ -7,7 +7,7 @@ import Footer from "./_components/Footer";
 function Layout({ children }) {
   const [toggle, setToggle] = useState(false);
   return (
-    <div>
+    <div className="bg-bg">
       <div className="w-full  bg-bg">
         <Header toggle={toggle} setToggle={setToggle} />
       </div>

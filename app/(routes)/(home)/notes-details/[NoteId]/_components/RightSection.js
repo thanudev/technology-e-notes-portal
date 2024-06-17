@@ -19,7 +19,7 @@ function RightSection({ note }) {
   const user = true;
   return (
     <div
-      className="border rounded-md mt-2 md:mt-0 md:ml-2 p-2 flex gap-4 flex-col justify-center items-center
+      className="border  border-gray-300 rounded-md mt-2 md:mt-0 md:ml-2 p-2 flex gap-4 flex-col justify-center items-center
   "
     >
       {!userInfo ? (

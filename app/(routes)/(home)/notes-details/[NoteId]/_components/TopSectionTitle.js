@@ -4,7 +4,7 @@ import React from "react";
 function TopSectionTitle({ note }) {
   return (
     <div>
-      <div className="rounded-md border p-2 ">
+      <div className="rounded-md border p-2 border-gray-300">
         <h2 className="text-primary font-bold text-[20px]">
           {note?.unitNo}.{note?.title}({note?.type})
         </h2>

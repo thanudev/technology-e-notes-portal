@@ -8,7 +8,7 @@ function BannerSection() {
   const { userInfo } = useAuth();
 
   return (
-    <div className="flex items-center justify-center pb-5 pt-2 bg-bg border">
+    <div className="flex items-center justify-center pb-5 pt-2 bg-bg ">
       <div className="flex flex-col justify-evenly items-center pb-6 gap-5 py-2 bg-primary rounded-[20px] w-[95%]  ">
         <h2 className="text-[25px] cursor-pointer text-white my-3 font-bold">
           Technology E Learn Portal

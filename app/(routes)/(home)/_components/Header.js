@@ -50,13 +50,13 @@ function Header({ toggle, setToggle }) {
       </div>
 
       {/* Search Box */}
-      <div className="bg-white p-3 hidden md:flex rounded-full gap-1 ">
+      {/* <div className="bg-white p-3 hidden md:flex rounded-full gap-1 ">
         <Search className="cursor-pointer" />
         <input
           className="text-gray-700 border-none outline-none "
           placeholder="Search"
         />
-      </div>
+      </div> */}
 
       {/* Menu Items */}
       <div className="hidden md:flex items-center gap-3">
