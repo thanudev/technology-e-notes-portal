@@ -1,9 +1,12 @@
+"use client";
 import { AlignJustify, Book, BookOpenCheck, Search, Users } from "lucide-react";
 import React, { useState } from "react";
-import Navbar from "./Navbar";
 import { useRouter } from "next/navigation";
+import useAuth from "@/app/_hooks/useAuth";
 
 function Header({ toggle, setToggle }) {
+  const { userInfo, logout } = useAuth();
+
   const menu = [
     {
       id: 0,
@@ -81,9 +84,20 @@ function Header({ toggle, setToggle }) {
 
       {/* Get Started Button */}
       <div>
-        <div className="bg-primary py-3 px-2 rounded-md text-white cursor-pointer hover:bg-primary_dark hover:shadow-md">
-          <h2>Get Started</h2>
-        </div>
+        {userInfo ? (
+          <img
+            onClick={logout}
+            src={userInfo?.photoURL}
+            className=" rounded-full h-[40px] w-[40px] cursor-pointer  hover:shadow-md"
+          />
+        ) : (
+          <div
+            onClick={() => router.push("/sign-in-google")}
+            className="bg-primary py-3 px-2 rounded-md text-white cursor-pointer hover:bg-primary_dark hover:shadow-md"
+          >
+            <h2>Get Started</h2>
+          </div>
+        )}
       </div>
     </div>
   );

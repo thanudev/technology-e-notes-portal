@@ -9,7 +9,7 @@ function Footer() {
           <h2 className="text-white text-[20px] shadow-sm cursor-pointer">
             Technology E Learning Portal
           </h2>
-          <p className="text-white">
+          <p className="text-white cursor-pointer">
             This product developed by Easy Solutions Pvt Ltd Company. The Ceo Is
             @Thanushan. This is a free open source product for students..
           </p>
@@ -18,10 +18,20 @@ function Footer() {
           <h2 className="text-white text-[20px] shadow-sm cursor-pointer">
             Company - Easy Solutions
           </h2>
+          <ul className="text-white text-[16px] underline cursor-pointer">
+            <li>Share</li>
+            <li>Details</li>
+          </ul>
         </div>
         <div>
           <h2 className="text-white text-[20px] shadow-sm cursor-pointer">
             Support
+          </h2>
+          <h2 className="text-white text-[16px] underline cursor-pointer">
+            Privacy Policy
+          </h2>
+          <h2 className="text-white text-[16px] underline cursor-pointer">
+            Donate To Company
           </h2>
         </div>
       </div>
