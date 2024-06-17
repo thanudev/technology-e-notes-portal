@@ -22,7 +22,7 @@ function page() {
         </h1>
 
         <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
-          create an account to access to the notes for free. and you can
+          create an account to access to the notes for free, and you can
           download all subject a/l pastpapers as well.
         </p>
 
