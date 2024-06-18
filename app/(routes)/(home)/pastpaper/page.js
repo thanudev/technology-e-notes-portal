@@ -13,6 +13,7 @@ import { db } from "@/firebase-config";
 import { BsFilePdf } from "react-icons/bs";
 import { Download } from "lucide-react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 function page() {
   const { userInfo } = useAuth();
@@ -76,10 +77,22 @@ function page() {
       querySnapshot?.docs?.forEach((doc) => {
         pp.push({ id: doc?.id, ...doc.data() });
         setPastpaper(pp);
+        toast.success("Pastpaper Found. You Can Download it");
       });
     } else {
       setPastpaper([]);
+      toast.error("Pastpaper Not Found. Try Another One..");
     }
+  };
+
+  const downloadFile = async (pdffile) => {
+    const url = pdffile;
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${pastpaper[0]?.subject}(${pastpaper[0]?.year})தமிழ்.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.remove(link);
   };
 
   return years && subjects ? (
@@ -91,12 +104,13 @@ function page() {
         <div className="">
           {/* Select Year */}
           <div className="flex flex-row items-center gap-2 mt-5">
-            <h2 className="text-black font-medium ">Select Year</h2>
+            <h2 className="text-black font-medium ">Select</h2>
             <select
+              className="bg-white p-2 rounded-md outline-none text-primary"
               value={userSelectedYear}
               onChange={(event) => setUserSelectedYear(event.target.value)}
             >
-              <option value={null}>Select Year</option>
+              <option value={null}>Year</option>
               {years?.map((year, index) => (
                 <option key={index} value={year?.year}>
                   {year?.year}
@@ -107,12 +121,13 @@ function page() {
 
           {/* Select Subject */}
           <div className="flex flex-row items-center gap-2 mt-5">
-            <h2 className="text-black font-medium ">Select Year</h2>
+            <h2 className="text-black font-medium ">Select</h2>
             <select
+              className="bg-white p-2 rounded-md outline-none text-primary"
               value={userSelectedSubject}
               onChange={(event) => setUserSelectedSubject(event.target.value)}
             >
-              <option>Select Subject</option>
+              <option>Subject</option>
               {subjects?.map((subject, index) => (
                 <option key={index} value={subject?.name}>
                   {subject?.name}
@@ -125,22 +140,23 @@ function page() {
         {/* Get Pastpaper Button */}
         <button
           disabled={buttonOff}
-          onClick={() => getPastpaper()}
+          onClick={
+            userInfo
+              ? () => getPastpaper()
+              : () => {
+                  toast.error("Sign In Required To Proceed");
+                  router.push("/sign-in-google");
+                }
+          }
           className={`mt-10 bg-primary  text-white px-3 py-2 rounded-md ${
-            buttonOff
-              ? "bg-gray-400 cursor-not-allowed hover:bg-gray-300"
-              : null
+            buttonOff ? "bg-gray-400 cursor-not-allowed text-black" : null
           }`}
         >
           Get Pastpaper
         </button>
 
         {/* Pastpaper */}
-        {!pastpaper?.length ? (
-          <div className="mt-3 border border-gray-300 p-3 rounded-md">
-            <h2>No Pastpaper Found</h2>
-          </div>
-        ) : (
+        {!pastpaper?.length ? null : (
           <div className="mt-3 border border-gray-300 p-3 rounded-md flex flex-row items-center justify-between">
             <h2>
               {pastpaper[0]?.year},{pastpaper[0]?.subject} தமிழ்{" "}
@@ -151,15 +167,7 @@ function page() {
               size={35}
               onClick={
                 userInfo
-                  ? () => {
-                      const url = pastpaper[0]?.pdf;
-                      const link = document.createElement("a");
-                      link.href = url;
-                      link.download = `${pastpaper[0]?.subject}(${pastpaper[0]?.year})தமிழ்.pdf`;
-                      document.body.appendChild(link);
-                      link.click();
-                      document.body.remove(link);
-                    }
+                  ? () => downloadFile(pastpaper[0]?.pdf)
                   : router.push("/sign-in-google")
               }
             />

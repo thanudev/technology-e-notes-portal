@@ -19,10 +19,6 @@ function Layout({ children }) {
       )}
 
       {children}
-
-      <div className="bg-primary mt-10 w-full ">
-        <Footer />
-      </div>
     </div>
   );
 }

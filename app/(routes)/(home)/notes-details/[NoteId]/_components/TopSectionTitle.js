@@ -8,10 +8,10 @@ function TopSectionTitle({ note }) {
         <h2 className="text-primary font-bold text-[20px]">
           {note?.unitNo}.{note?.title}({note?.type})
         </h2>
-        <img
+        {/* <img
           src={note?.banner}
           className="mt-2 h-[300px] w-full object-contain "
-        />
+        /> */}
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-1 text-gray-400 mt-2 cursor-pointer">
             <User />

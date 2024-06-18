@@ -6,6 +6,7 @@ import BannerSection from "./_components/BannerSection";
 import Skeleton from "./_components/Skeleton";
 import { useRouter } from "next/navigation";
 import Card from "./_components/Card";
+import Footer from "../_components/Footer";
 
 function Home() {
   const [notes, setNotes] = useState();
@@ -38,6 +39,9 @@ function Home() {
             ? notes?.map((item, index) => <Card key={index} note={item} />)
             : [0, 1, 2, 3, 4].map((item, index) => <Skeleton key={index} />)}
         </div>
+      </div>
+      <div className="bg-primary mt-10 w-full ">
+        <Footer />
       </div>
     </div>
   );

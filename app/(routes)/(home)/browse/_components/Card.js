@@ -2,6 +2,7 @@
 import useAuth from "@/app/_hooks/useAuth";
 import { useRouter } from "next/navigation";
 import React from "react";
+import toast from "react-hot-toast";
 import { BsFilePdf } from "react-icons/bs";
 
 function Card({ note }) {
@@ -17,7 +18,10 @@ function Card({ note }) {
         onClick={
           userInfo
             ? () => router.push("/notes-details/" + note?.id)
-            : () => router.push("/sign-in-google")
+            : () => {
+                toast.error("Sign In Required To Proceed");
+                router.push("/sign-in-google");
+              }
         }
         className="bg-primary rounded-full text-white p-2 flex flex-row items-center justify-center cursor-pointer hover:bg-primary_dark"
       >

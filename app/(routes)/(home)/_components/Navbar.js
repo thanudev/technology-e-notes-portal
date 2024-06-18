@@ -1,5 +1,5 @@
 "use client";
-import { Book, BookOpenCheck, Search } from "lucide-react";
+import { Book, BookOpenCheck, PlayCircleIcon, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -19,9 +19,9 @@ function Navbar({ closeNav }) {
     },
     {
       id: 3,
-      name: "Search",
-      icon: Search,
-      path: "/search",
+      name: "Play Ground",
+      icon: PlayCircleIcon,
+      path: "/play",
     },
   ];
 
@@ -31,8 +31,8 @@ function Navbar({ closeNav }) {
   return (
     <div className="p-2">
       {/* Logo */}
-      <div className=" p-2 flex items-center justify-center border-b">
-        <img src="/logo.svg" />
+      <div className=" p-2 flex items-center justify-center border-b  ">
+        <img src="/logo.png" className="h-16 w-16 rounded-full" />
       </div>
 
       <h2

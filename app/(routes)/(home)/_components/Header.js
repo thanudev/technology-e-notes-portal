@@ -1,5 +1,12 @@
 "use client";
-import { AlignJustify, Book, BookOpenCheck, Search, Users } from "lucide-react";
+import {
+  AlignJustify,
+  Book,
+  BookOpenCheck,
+  PlayCircleIcon,
+  Search,
+  Users,
+} from "lucide-react";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import useAuth from "@/app/_hooks/useAuth";
@@ -22,9 +29,9 @@ function Header({ toggle, setToggle }) {
     },
     {
       id: 3,
-      name: "Search",
-      icon: Search,
-      path: "/search",
+      name: "Play Ground",
+      icon: PlayCircleIcon,
+      path: "/play",
     },
   ];
 
@@ -39,7 +46,8 @@ function Header({ toggle, setToggle }) {
       </div>
 
       {/* Slogan */}
-      <div className="flex">
+      <div className="flex items-center gap-1">
+        <img src="/logo.png" className="h-12 w-12 rounded-full" />
         <h2
           className={`text-primary font-semibold cursor-pointer ${
             toggle && "hidden"
