@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import Header from "./_components/Header";
 import Navbar from "./_components/Navbar";
-import Footer from "./_components/Footer";
 
 function Layout({ children }) {
   const [toggle, setToggle] = useState(false);
